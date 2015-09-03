@@ -4,11 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app'),
+var app = require('app'),
     debug = require('debug')('CurChart-v3:server'),
     http = require('http'),
-    config = require('../config'),
-    log = require('../lib/log')(module);
+    config = require('config'),
+    log = require('lib/log')(module);
 
 /**
  * Get port from environment and store in Express.

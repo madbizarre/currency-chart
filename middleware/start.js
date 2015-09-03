@@ -1,6 +1,6 @@
-var create = require('../middleware/createDB'),
-    load = require('../middleware/load'),
-    log = require('../lib/log'),
+var create = require('middleware/createDB'),
+    load = require('middleware/load'),
+    log = require('lib/log'),
     period = 1000*60*60*24; //1 день
 
 var start = function (){

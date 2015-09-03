@@ -1,9 +1,9 @@
 var async = require('async'),
-    download = require('../../middleware/load/downloadXML'),
-    load = require('../../middleware/load/loadData'),
-    log = require('../../lib/log')(module),
-    pars = require('../../middleware/load/parsXML'),
-    selectCurrencyCode = require('../../middleware/selectCurrencyList').selectCurrencyList;
+    download = require('middleware/load/downloadXML'),
+    load = require('middleware/load/loadData'),
+    log = require('lib/log')(module),
+    pars = require('middleware/load/parsXML'),
+    selectCurrencyCode = require('middleware/selectCurrencyList').selectCurrencyList;
 //true - полное скачивание, false - обновление
 var run = function (isFullUpdate){
     selectCurrencyCode(function(currencyList){ //выбираем список валют из бд

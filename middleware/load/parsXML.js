@@ -1,6 +1,6 @@
 var parser = require('node-xml-lite');
 
-require('../../middleware/helpers');
+require('middleware/helpers');
 
 module.exports = function(currencyId, xml, callback){
     var data = parser.parseString(xml),

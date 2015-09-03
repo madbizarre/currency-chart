@@ -1,8 +1,8 @@
 var async = require('async'),
-    config = require('../../config'),
-    log = require('../../lib/log')(module),
+    config = require('config'),
+    log = require('lib/log')(module),
     mysql = require('mysql');
-require('../../middleware/helpers');
+require('middleware/helpers');
 
 module.exports = function(currencyCode, point, data, callback){
     var dateBegin = '1992-01-01',

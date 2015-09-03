@@ -1,8 +1,8 @@
 var async = require('async'),
-    config = require('../config'),
-    log = require('../lib/log')(module),
+    config = require('config'),
+    log = require('lib/log')(module),
     mysql = require('mysql');
-require('../middleware/helpers');
+require('middleware/helpers');
 
 var selectData = function(arguments, callback){
     var connection = mysql.createConnection({

@@ -1,6 +1,6 @@
 var async = require('async'),
-    config = require('../config'),
-    log = require('../lib/log')(module),
+    config = require('config'),
+    log = require('lib/log')(module),
     mysql = require('mysql');
 
 exports.selectCurrencyList = function (callback){

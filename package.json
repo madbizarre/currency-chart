@@ -1,28 +1,28 @@
 {
-  "name": "Currency Chart",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
+  "name": "currency-chart",
+  "version": "0.0.2",
+  "description": "Currency chart",
+  "main": "./bin/www",
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
+    "body-parser": "~1.13.3",
     "debug": "~2.2.0",
-    "ejs": "~2.3.3",
-    "express": "~4.13.1",
+    "cookie-parser": "~1.3.5",
+    "express": "~4.13.3",
     "morgan": "~1.6.1",
-    "node-compass": "0.2.3",
+    "mysql": "~2.8.0",
+    "nconf": "~0.7.2",
+    "node-xml-lite": "~0.0.5",
     "serve-favicon": "~2.3.0",
-    "mysql": "2.8.0",
-    "nconf": "0.7.2",
-    "winston": "0.9.0",
-    "async": "1.4.1",
-    "node-xml-lite": "0.0.5"
+    "winston": "~0.9.0",
+    "node-mysql": "~0.3.7",
+    "ejs": "~2.3.3",
+    "async": "~1.4.1",
+    "node-compass": "~0.2.3"
   },
-  "description": "currency chart by madbizarre",
-  "main": "app.js",
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/madbizarre/currency-chart.git"
@@ -31,10 +31,12 @@
     "currency",
     "chart",
     "nvd3",
+    "node.js",
+    "javascript",
     "mysql"
   ],
   "author": "madbizarre",
-  "license": "0.0.3",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/madbizarre/currency-chart/issues"
   },

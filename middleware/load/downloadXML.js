@@ -1,8 +1,8 @@
-var config = require('../../config'),
-    selectLastData = require('../../middleware/selectLastData'),
+var config = require('config'),
+    selectLastData = require('middleware/selectLastData'),
     http = require('http');
 
-require('../../middleware/helpers');
+require('middleware/helpers');
 
 var run = function (currencyCode, dateBegin, callback){
 //             http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=    14/03/2014   &date_req2=    22/03/2014 &VAL_NM_RQ=    R01239

@@ -4,9 +4,9 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    config = require('./config'),
-    log = require('./lib/log'),
-    start = require('./middleware/start');
+    config = require('config'),
+    log = require('lib/log'),
+    start = require('middleware/start');
 
 config.set('port', 3010);
 config.set('host', '192.168.0.89');
