@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//start();
+start();
 
 require('./routes')(app);
 

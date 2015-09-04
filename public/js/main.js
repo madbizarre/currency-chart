@@ -83,7 +83,7 @@
             var views = new App.Views.CurrencyList({collection:list});
             var currencyList = $('#list');
             currencyList.append(views.render().el);
-            currencyList.append('<div class="row"><div class="input-field col s6 m3 l3"><input class="datepicker" type="date" name="dateBegin" id="dateBegin"><label for="dateBegin">Начальная дата</label></div><div class="input-field col s6 m4 l3"><input class="datepicker" type="date" name="dateEnd" id="dateEnd"><label for="dateEnd">Конечная дата</label></div></div>');
+            currencyList.append('<div class="row"><div class="input-field col s6 m3 l3"><input class="datepicker" type="date" name="dateBegin" id="dateBegin" required="required"><label for="dateBegin">Начальная дата</label></div><div class="input-field col s6 m4 l3"><input class="datepicker" type="date" name="dateEnd" id="dateEnd" required="required"><label for="dateEnd">Конечная дата</label></div></div>');
             currencyList.append('<div class="row"><div class="input-field col s6 m3 l3"><button class="btn waves-effect waves-teal" type="submit">Подтвердить</button></div><div class="input-field col s6 m4 l3"><button class="btn waves-effect waves-red red" type="reset">Отменить</button></div></div>');
             var submitForm = new App.Views.SubmitForm({collection:list});
             var pickdateOptions = {
@@ -95,7 +95,7 @@
                 labelMonthPrev: 'Предыдущий месяц',
                 labelMonthSelect: 'Выберите месяц',
                 labelYearSelect: 'Выберите год',
-                monthsFull: [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сантябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
+                monthsFull: [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
                 monthsShort: [ 'Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек' ],
                 weekdaysFull: [ 'Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота' ],
                 weekdaysShort: [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],

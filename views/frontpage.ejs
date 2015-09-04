@@ -1,32 +1,109 @@
 <!DOCTYPE html>
 <html>
-<% include layout/head.ejs%>
-<% include layout/layoutTop.ejs %>
-<h1><%=title%></h1>
-<div class="section">
-    <h4>Список валют</h4>
-    <form action="/" id="list">
-        <!--   <div class="row">
-               <div class="input-field col s6">
-                   <button class=" btn waves-effect waves-light" type="submit">Подтвердить</button>
-                   <button class=" btn waves-effect waves-light" type="reset">Отменить</button>
-               </div>
-           </div>-->
-    </form>
-</div>
-<div class="section" id="chart">
-    <h4>График</h4>
-    <svg></svg>
-</div>
-<% include layout/layoutBottom.ejs %>
+<head>
+    <title>Курсы валют</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="sass/materialize.css"  media="screen,projection"/>
+    <link href="css/nv.d3.css" rel="stylesheet" type="text/css">
+    <link href="css/my-app.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<main>
+    <div class="navbar-fixed">
+        <nav class="">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo">Курсы Валют</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#list">Список валют</a></li>
+                    <li><a href="#chart">График</a></li>
+                    <li><a class="modal-trigger" href="#console">Консоль</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+                    <li><a href="#list">Список валют</a></li>
+                    <li><a href="#chart">График</a></li>
+                    <li><a href="/console">График</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Меню</i></a>
+            </div>
+        </nav>
+    </div>
+    <div id="console" class="modal">
+        <form action="/console" method="post">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="login" type="text" placeholder="Login" class="validate">
+                        <label for="first_name">Login</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="password" type="password" placeholder="Password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action">Подтвердить</button>
+                <a href="#" class="modal-action modal-close waves-effect waves-red btn-flat ">Отменить</a>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <h1><%=title%></h1>
+        <div class="section">
+            <h4>Список валют</h4>
+            <form action="/" id="list"></form>
+        </div>
+        <div class="section" id="chart">
+            <h4>График</h4>
+            <svg></svg>
+        </div>
+    </div>
+</main>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Используемые технологии</h5>
+                <p class="grey-text text-lighten-4">Веб-сервер: Node.JS</p>
+                <p class="grey-text text-lighten-4">База данных: MySQL</p>
+                <p class="grey-text text-lighten-4">Граф. библиотека: nvd3.js</p>
+                <p class="grey-text text-lighten-4">Так же: backbone.js, ejs</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2015 Created by madbizarre
+            <a class="grey-text text-lighten-4 right" href="https://github.com/madbizarre">GitHub</a>
+        </div>
+    </div>
+</footer>
 <!-- js -->
-<% include layout/script.ejs %>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bin/materialize.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+    });
+</script>
 <script src="js/underscore.js"></script>
 <script src="js/backbone.js"></script>
-
 <script src="js/d3.min.js" charset="utf-8"></script>
 <script src="js/nv.d3.js"></script>
-
 <script src="js/main.js"></script>
 
 </body>
