@@ -1,7 +1,7 @@
 {
-  "port": 3010,
-  "host": "192.168.0.89",
-  "root": "D:\\Projects\\NodeJS\\CurChart-v3",
+  "port": 3000,
+  "host": "localhost",
+  "root": "d:\\Projects\\NodeJS\\CurChart-v3",
   "mysql": {
     "host": "localhost",
     "user": "root",

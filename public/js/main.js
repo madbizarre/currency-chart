@@ -61,18 +61,22 @@
         submit: function (e){
             e.preventDefault();
 
-            var tmp = $(e.currentTarget).find('input[type=checkbox]:checked');
-            //var picker = $(e.currentTarget).find('.datepicker');
-            var dataList = {list:[], dateBegin: 0, dateEnd: 0};
-            var dateBeginPicker = $dateBegin.pickadate('picker');
-            var dateEndPicker = $dateEnd.pickadate('picker');
+            var currencyList = $(e.currentTarget).find('input[type=checkbox]:checked'),
+                dataList = {list:[], dateBegin: 0, dateEnd: 0},
+                dateBeginPicker = $dateBegin.pickadate('picker'),
+                dateEndPicker = $dateEnd.pickadate('picker');
+
             dataList.dateBegin = dateBeginPicker.get('select').pick;
             dataList.dateEnd = dateEndPicker.get('select').pick;
-            for (var i = 0, j = tmp.length ; i < j ; i++){
-                dataList.list.push(this.collection.get(tmp[i].id).attributes);
-            }
-            refresh(dataList);
+            if (!currencyList.length) {
+                Materialize.toast('Вы не выбрали валюту!', 4000)
+            } else {
+                for (var i = 0, j = currencyList.length ; i < j ; i++){
+                    dataList.list.push(this.collection.get(currencyList[i].id).attributes);
+                }
 
+                refresh(dataList);
+            }
         }
 
     });
@@ -86,11 +90,13 @@
             currencyList.append('<div class="row"><div class="input-field col s6 m3 l3"><input class="datepicker" type="date" name="dateBegin" id="dateBegin" required="required"><label for="dateBegin">Начальная дата</label></div><div class="input-field col s6 m4 l3"><input class="datepicker" type="date" name="dateEnd" id="dateEnd" required="required"><label for="dateEnd">Конечная дата</label></div></div>');
             currencyList.append('<div class="row"><div class="input-field col s6 m3 l3"><button class="btn waves-effect waves-teal" type="submit">Подтвердить</button></div><div class="input-field col s6 m4 l3"><button class="btn waves-effect waves-red red" type="reset">Отменить</button></div></div>');
             var submitForm = new App.Views.SubmitForm({collection:list});
-            var pickdateOptions = {
+            $.extend($.fn.pickadate.defaults, {
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: Math.round((new Date() - new Date(1992,1,1))/(1000*60*60*24*356)), // Creates a dropdown of 15 years to control year
                 min: new Date(1992,1,1),
                 max: new Date(),
+                defaults: new Date(),
+                firstDay: 1,
                 labelMonthNext: 'Следующий месяц',
                 labelMonthPrev: 'Предыдущий месяц',
                 labelMonthSelect: 'Выберите месяц',
@@ -103,9 +109,19 @@
                 today: 'Сегодня',
                 clear: false,
                 close: 'Закрыть'
-            };
-            $dateBegin = $('#dateBegin').pickadate(pickdateOptions);
-            $dateEnd = $('#dateEnd').pickadate(pickdateOptions);
+            });
+            $dateBegin = $('#dateBegin').pickadate({
+                onStart: function (){
+                    var date = new Date();
+                    date.setMonth(date.getMonth() - 1);
+                    this.set('select',date);
+                }
+            });
+            $dateEnd = $('#dateEnd').pickadate({
+                onStart: function (){
+                    this.set('select', new Date());
+                }
+            });
         });
 
 
@@ -187,10 +203,14 @@
                 dateBegin: dataList.dateBegin,
                 dateEnd: dataList.dateEnd
             },
-            success: function(values){
+            success: function(dt){ //dt = [{key, values}]
                 data.length = 0;
-                for (var i = 0, j = values.length ; i < j ; i++ ){
-                    data.push(values[i]);
+                for (var i = 0, j = dt.length ; i < j ; i++ ){
+                    if (!dt[i].values.length){
+                        Materialize.toast('Нет данных о данной валюте: ' + dt[i].key, 4000)
+                    } else {
+                        data.push(dt[i]);
+                    }
                 }
                 chart.update();
             }

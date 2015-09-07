@@ -8,8 +8,10 @@ var express = require('express'),
     log = require('lib/log'),
     start = require('middleware/start');
 
-config.set('port', 3010);
-config.set('host', '192.168.0.89');
+config.set('port', 3000);
+config.set('host', 'localhost');
+config.set('mysql:password', 'password');
+config.set('root', __dirname);
 config.save(function(err){if (err) throw err;});
 
 var app = express();
@@ -28,10 +30,13 @@ if (app.get('env') == 'development') { //уровень логирования
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-compass')({mode: 'expanded'}));
+app.use(require('node-compass')({
+    mode: 'expanded',
+    project: path.join(__dirname, 'public')
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-start();
+//start();
 
 require('./routes')(app);
 

@@ -1,6 +1,6 @@
 {
   "name": "currency-chart",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Currency chart",
   "main": "./bin/www",
   "dependencies": {

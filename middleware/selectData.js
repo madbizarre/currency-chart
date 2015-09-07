@@ -46,15 +46,15 @@ var selectData = function(arguments, callback){
             if (err) throw err;
             if (results.length) {
                 data.list.push({
-                    date: +dateBegin.stringToDate(),
-                    value: results[0].value,
+                    x: +dateBegin.stringToDate(),
+                    y: results[0].value,
                     nominal: results[0].nominal
                 });
             } else {
                 point = true;
                 data.list.push({
-                    date: +dateBegin.stringToDate(),
-                    value: null,
+                    x: +dateBegin.stringToDate(),
+                    y: null,
                     nominal: null
                 });
             }
@@ -69,26 +69,28 @@ var selectData = function(arguments, callback){
             if (results.length) { //если есть данные
                 if (point){
                     data.list.push({
-                        date: +results[0].date - 1,
-                        value: null,
+                        x: +results[0].date - 1,
+                        y: null,
                         nominal: null
                     });
                 }
                 for (var i = 0, j = results.length; i < j; i++){
                     data.list.push({
-                        date: +results[i].date,
-                        value: results[i].value,
+                        x: +results[i].date,
+                        y: results[i].value,
                         nominal: results[i].nominal
                     });
                 }
                 var n = data.list.length-1;
                 if (data.list[n].date != arguments.dateEnd){
                     data.list.push({
-                        date: +dateEnd.stringToDate(),
-                        value: data.list[n].value,
+                        x: +dateEnd.stringToDate(),
+                        y: data.list[n].value,
                         nominal: data.list[n].nominal
                     });
                 }
+            } else {
+                data.list = [];
             }
             callback();
         });
